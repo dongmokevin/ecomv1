@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Yaounde Market</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="We sell and provide sleeping pills all over the UK. Get your sleeping pills and do away with depression, anxiety and many forms of nervous disorders "
+    />
+    <meta
+      name="og:Yaounde Market"
+      property="og:Yaounde Market"
+      content="sleeping pills availabe in UK "
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Favicons -->
+    <link rel="icon" href="" />
+
+    <!-- Libs CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'libs/@fortawesome/fontawesome-free/css/all.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'libs/flickity/dist/flickity.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'libs/highlightjs/styles/vs2015.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'libs/simplebar/dist/simplebar.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'libs/flickity-fade/flickity-fade.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'fonts/feather/feather.css' %}" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="{% static 'css/theme.min.css' %}" />
+    <!--
+    <script type="text/javascript">
+      var user = '{{request.user}}'
+
+      function getToken(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+            }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getToken('csrftoken');
+    </script> -->
+  </head>
+
+  <body
+    data-spy="scroll"
+    data-target=".navbar"
+    data-offset="91"
+    style="padding-top: 90px"
+  >
+    <div class="mt-5 pt-4">
+      {% if messages %} {% for message in messages %}
+      <div
+        class="alert alert-{{ message.tags }} alert-dismissible fade show"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+    {% include 'partials/_nav.html' %} {% block content %} {% endblock %}
+
+    <!-- JAVASCRIPT -->
+
+    <!-- Libs JS -->
+    <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'libs/flickity/dist/flickity.pkgd.min.js' %}"></script>
+    <script src="{% static 'libs/highlightjs/highlight.pack.min.js' %}"></script>
+    <script src="{% static 'libs/jarallax/dist/jarallax.min.js' %}"></script>
+    <script src="{% static 'libs/list.js/dist/list.min.js' %}"></script>
+    <script src="{% static 'libs/simplebar/dist/simplebar.min.js' %}"></script>
+    <script src="{% static 'libs/smooth-scroll/dist/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'libs/flickity-fade/flickity-fade.js' %}"></script>
+
+    <!-- Theme JS -->
+    <script src="{% static 'js/theme.min.js' %}"></script>
+
+    <!-- Cart JS -->
+    <script src="{% static 'js/cart.js' %}"></script>
+    <!-- FOOTER -->
+  </body>
+</html>

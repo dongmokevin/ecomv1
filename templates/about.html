@@ -1,0 +1,138 @@
+{% load static %} {% include 'main.html' %} {% block content %}
+<!-- BREADCRUMB -->
+<nav class="my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
+          <li class="breadcrumb-item">
+            <a class="text-gray-400" href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="breadcrumb-item active">About Us</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- WELCOME -->
+<section>
+  <div class="container">
+    <div
+      class="row justify-content-center py-14 bg-cover"
+      style="background-image: url('{% static 'img/smiling-girl2.jpg' %}')"
+    >
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <!-- Heading -->
+        <h1 class="mb-0 text-center text-white">
+          Quality is what we guarantee.
+        </h1>
+        <h2 class="mb-0 text-center text-white">
+          Make you happy is what we promise.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="py-12">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-12 col-md-6 order-md-2 text-right">
+        <!-- Image -->
+        <img
+          src="{% static 'img/smile-woman-2.jpg' %}"
+          alt="..."
+          class="img-fluid w-50"
+        />
+
+        <!-- Image -->
+        <div class="text-left mt-n13 mt-lg-n15 mb-10 mb-md-0">
+          <img
+            src="{% static 'img/woman-about.jpg' %}"
+            alt="..."
+            class="img-fluid w-75"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-5 order-md-1">
+        <!-- Preheading -->
+        <h6 class="heading-xxs mb-3 text-gray-400">Who we are</h6>
+
+        <!-- Heading -->
+        <h2 class="mb-7">Our Story</h2>
+
+        <!-- Text -->
+        <p class="font-size-lg text-muted">
+          supplying its customers with a wide ready made products. With over 15
+          years of experience in the field of e-shopping, our name is a familiar
+          sight in almost every major city and town across the country and is
+          becoming increasingly more visible further afield, in markets as
+          diverse as the Nigeria and Gabon to Morocco, Algeria and Tunisia.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="py-12 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <!-- Heading -->
+        <h2 class="mb-10">Our Proposition</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-9 font-size-lg text-gray-500">
+      <div class="col-12 col-md-5">
+        <p>
+          We sell a wide range of branded and own-label products across these
+          categories and also own a number of trademarks for specific product
+          lines.
+        </p>
+        <p class="mb-md-0">
+          In total we offer our customers more than 9,000 products across all of
+          our ranges, including products from some of the world’s most famous
+          clothing industries for all ages.
+        </p>
+      </div>
+      <div class="col-12 col-md-6 col-lg-5 font-size-lg text-gray-500">
+        <p class="mb-0">
+          We also sell products other than just clothing under licence, for
+          example food through nestle
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <!-- Button -->
+        <a class="btn btn-dark" href="{% url 'core:store'%}">
+          Shop Now <i class="fe fe-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer
+  class="bg-dark bg-cover @@classList"
+  style="background-image: url(./assets/img/patterns/pattern-2.svg)"
+>
+  <div class="py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <!-- Copyright -->
+          <p class="mb-3 mb-md-0 font-size-xxs text-muted">
+            © 2021 All rights reserved. Yaounde Market.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+{% include 'main.html' %}
+{% block content %}
+<!-- WELCOME -->
+<section
+  class="bg-cover py-14"
+  id="welcome"
+  data-jarallax
+  data-speed=".8"
+  style="background-image: url('{% static 'img/cover1.jpg' %}')"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-7 col-lg-5 text-white">
+        <!-- Heading -->
+        <h1 class="display-4">Best Store in Cameroon</h1>
+
+        <!-- Text -->
+        <p class="mb-8 font-size-lg">
+          Get your high quality and famous brands products from us. Quality is our motto.
+        </p>
+
+        <!-- Button -->
+        <a href="{% url 'core:store' %}" class="btn btn-primary"> Shop Now </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO-->
+<section class="bg-light">
+  <div class="container">
+    <div class="row no-gutters justify-content-between">
+      <div class="col-12 col-md-5 py-12">
+        <!-- Heading -->
+        <h3 class="mb-7">Welcome to Yaounde Market official website.</h3>
+
+        <!-- Text -->
+        <p class="mb-7 text-muted">
+          We lead the service center in providing various types of products. We
+          sell products to any group age and we do instant delivery through out
+          the country.
+        </p>
+
+        <p class="mb-7 text-muted">
+          This is a private business, which aims to provide products to clients
+          privately due to difficulies of ecommerce in cameroon.
+        </p>
+      </div>
+      <div
+        class="col-12 col-md-6 mt-12 mb-n12 bg-cover"
+        style="background-image: url({% static 'img/cart1.jpg' %})"
+      ></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="section pt-12 pt-md-15 pb-12">
+  <div class="container text-center">
+    <div class="col-lg-8 mx-auto">
+      <h3>We are here for you and nobody else &#128526;</h3>
+      <p>
+        No matter how bad your feel, We are here to make you feel special,
+        We can help you get the best clothings to make you feel cooler than ever.
+        We sell a wide range of branded and own-label products. Quality is assured.
+        Order from us and get your products delivered before two days.
+      </p>
+      <!-- Button -->
+      <a class="btn btn-dark" href="{% url 'core:store'%}">
+        Shop Now <i class="fe fe-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer
+  class="bg-dark bg-cover @@classList"
+  style="background-image: url(./assets/img/patterns/pattern-2.svg)"
+>
+  <div class="py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <!-- Copyright -->
+          <p class="mb-3 mb-md-0 font-size-xxs text-muted">
+            © 2021 All rights reserved. Yaounde Markets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

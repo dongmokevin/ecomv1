@@ -1,0 +1,26 @@
+{% load static %}
+{% include 'main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-12 col-lg-8 mx-auto">
+                        <h2 class="text-center">Add a Product</h2>
+                        <form method="POST" class="form " enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

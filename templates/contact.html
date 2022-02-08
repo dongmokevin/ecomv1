@@ -1,0 +1,91 @@
+{% load static %} {% include 'main.html' %} {% block content %}
+
+<!-- BREADCRUMB -->
+<nav class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
+          <li class="breadcrumb-item">
+            <a class="text-gray-400" href="{% url 'core:home' %}">Home</a>
+          </li>
+          <li class="breadcrumb-item active">Contact Us</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<section class="pt-7 pb-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Heading -->
+        <h3 class="mb-10 text-center">Contact Us</h3>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-xl-8">
+        <aside class="mb-9 mb-md-0">
+          <!-- Heading -->
+          <h6 class="mb-6">
+            <i class="fe fe-phone text-primary mr-4"></i> Call to Us:
+          </h6>
+
+          <!-- Text -->
+          <p class="text-gray-500">
+            We're available from 7am - 22 pm, 7 days a week.
+          </p>
+          <p>
+            <strong>Customer Service:</strong><br />
+            <a class="text-gray-500" href="tel:60146-389-574"
+              >+237 657 131677</a
+            >
+          </p>
+
+          <!-- Divider -->
+          <hr />
+
+          <!-- Heading -->
+          <h6 class="mb-6">
+            <i class="fe fe-mail text-primary mr-4"></i> Write to Us:
+          </h6>
+
+          <!-- Text -->
+          <p class="text-gray-500">
+            Fill out our form and we will contact you within 24 hours.
+          </p>
+          <p>
+            <strong>Customer Service:</strong><br />
+            <a class="text-gray-500" href="mailto:shaminseta@gmail.com"
+              >shaminseta@gmail.com</a
+            >
+          </p>
+        </aside>
+      </div>
+      <div class="col-12 col-md-8"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer
+  class="bg-dark bg-cover @@classList"
+  style="background-image: url(./assets/img/patterns/pattern-2.svg)"
+>
+  <div class="py-6">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <!-- Copyright -->
+          <p class="mb-3 mb-md-0 font-size-xxs text-muted">
+            © 2021 All rights reserved. Yaounde Market.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

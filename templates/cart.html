@@ -1,0 +1,194 @@
+{% load static %}
+{% include 'main.html' %}
+{% block content %}
+<!-- BREADCRUMB -->
+  <hr>
+    <nav class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
+              <li class="breadcrumb-item">
+                <a class="text-gray-400" href="{% url 'core:home' %}">Home</a>
+              </li>
+              <li class="breadcrumb-item active">
+                Shopping Cart
+              </li>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+   <section class="pt-7 pb-12">
+     <div class="container">
+       <div class="row">
+         <div class="col-12">
+
+           <!-- Heading -->
+           <h3 class="mb-10 text-center">Shopping Cart</h3>
+
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-12 col-md-7">
+
+           <!-- List group -->
+           <ul class="list-group list-group-lg list-group-flush-x mb-6">
+             {% for item in basket %}
+             {% with product=item.product %}
+               <li data-index="{{product.id}}" class="list-group-item product-item">
+                 <div class="row align-items-center">
+                   <div class="col-3">
+
+                     <!-- Image -->
+                     <a href="{{ product.get_absolute_url }}">
+                       <img src="{{ product.thumbnail.url }}" alt="..." class="img-fluid">
+                     </a>
+
+                   </div>
+                   <div class="col">
+
+                     <!-- Title -->
+                     <div class="d-flex mb-2 font-weight-bold">
+                       <a class="text-body" href="product.html">{{ product.name }}</a>
+                       <!-- <span id="product_price" class="ml-auto">&#8383;{{product_price}}</span> -->
+                     </div>
+
+                     <!-- Text -->
+                     <p class="mb-7 font-size-sm text-muted">
+                       {{ product.generic_name }}
+                       <br>
+                       Unit price: &#8383; {{ product.price }}
+                     </p>
+
+                     <!--Footer -->
+                     <div class="d-flex align-items-center">
+
+                       <!-- Select -->
+                       <p class="mb-7 font-size-sm text-muted">
+                         <label for="select">Total Qty :</label>
+                         <select id="select{{product.id}}">
+                           <option selected>
+                             {{item.qty}}
+                           </option>
+                           <option value="">1</option>
+                           <option value="">2</option>
+                           <option value="">3</option>
+                           <option value="">4</option>
+                         </select>
+                       </p>
+
+                       <!-- Remove -->
+                       <button type="button" id="update-button" data-index="{{product.id}}"
+                         class="btn btn-outline-secondary btn-sm update-button ml-auto">
+                         Update
+                       </button>
+                       <button class="font-size-xs text-gray-400 ml-auto btn btn-link delete-button" id="delete-button" data-index="{{product.id}}" href="">
+                         <i class="fe fe-x"></i> Remove
+                       </button>
+
+                     </div>
+
+                   </div>
+                 </div>
+               </li>
+               {% endwith %}
+             {% endfor %}
+           </ul>
+
+         </div>
+         <div class="col-12 col-md-5 col-lg-4 offset-lg-1">
+
+           <!-- Total -->
+           <div class="card mb-7 bg-light">
+             <div class="card-body">
+               <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
+                 <li class="list-group-item d-flex">
+                   <span>Total items</span> <span class="ml-auto font-size-sm">
+                     {% with total_qty=basket|length %}
+                         <div id="item-qty" class="d-inline-flex">
+                             {% if total_qty > 0 %}
+                                 {{ total_qty }}
+                             {% else %}
+                                 0
+                             {% endif %}
+                         </div>
+                     {% endwith %}
+                   </span>
+                 </li>
+                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
+                   <span>Total</span> <span id="subtotal" class="ml-auto font-size-sm">&#8383;{{basket.get_total_price}}</span>
+                 </li>
+                 <li class="list-group-item font-size-sm text-center text-gray-500">
+                   Shipping cost calculated at Checkout *
+                 </li>
+               </ul>
+             </div>
+           </div>
+
+           <!-- Button -->
+           <a class="btn btn-block btn-dark mb-2" href="{% url "basket:send-message" %}">Place Order</a>
+           <!-- Link -->
+           <a class="btn btn-link btn-sm px-0 text-body" href="{% url 'core:store' %}">
+             <i class="fe fe-arrow-left mr-2"></i> Continue Shopping
+           </a>
+
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <script>
+     // Delete Item
+     $(document).on('click', '.delete-button', function (e) {
+       e.preventDefault();
+       var prodid = $(this).data('index');
+       $.ajax({
+         type: 'POST',
+         url: '{% url "basket:basket_delete" %}',
+         data: {
+           productid: $(this).data('index'),
+           csrfmiddlewaretoken: "{{csrf_token}}",
+           action: 'post'
+         },
+         success: function (json) {
+           $('.product-item[data-index="' + prodid + '"]').remove();
+           document.getElementById("subtotal").innerHTML = json.subtotal;
+           document.getElementById("basket-qty").innerHTML = json.qty
+           document.getElementById("item-qty").innerHTML = json.qty
+         },
+         error: function (xhr, errmsg, err) {}
+       });
+     })
+
+     // Update Item
+     $(document).on('click', '.update-button', function (e) {
+       e.preventDefault();
+       var prodid = $(this).data('index');
+       $.ajax({
+         type: 'POST',
+         url: '{% url "basket:basket_update" %}',
+         data: {
+           productid: $(this).data('index'),
+           productqty: $('#select' + prodid + ' option:selected').text(),
+           csrfmiddlewaretoken: "{{csrf_token}}",
+           action: 'post'
+         },
+         success: function (json) {
+           document.getElementById("item-qty").innerHTML = json.qty
+           document.getElementById("basket-qty").innerHTML = json.qty
+           document.getElementById("subtotal").innerHTML = json.subtotal
+           // document.getElementById("product_price").textContent = json.product_price
+         },
+         error: function (xhr, errmsg, err) {}
+       });
+     })
+
+   </script>
+
+{% endblock %}
